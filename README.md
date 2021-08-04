@@ -5,6 +5,9 @@ SpringBoot upload, download and delete file to MinIo
 ## Upload File
 ![Alt text](asset/minio_post.PNG?raw=true "Upload image file")
 
+## Upload Multiple File
+![Alt text](asset/minio_post_multiple.PNG?raw=true "Upload multiple file")
+
 ## Download File
 ![Alt text](asset/minio_getByFilename.PNG?raw=true "Download image file")
 

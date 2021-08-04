@@ -130,6 +130,26 @@ public class MinioResource {
         }
     }
     
+    @PostMapping("/multiple")
+    public void addMultipleAttachement(@RequestParam("file[]") MultipartFile files[]) {
+    	
+    	for (MultipartFile file : files) {
+			log.info("getOriginalFilename multiple: "+file.getOriginalFilename());
+			if (!file.isEmpty()) {
+				Path path = Path.of(file.getOriginalFilename());
+		        try {
+		            minioService.upload(path, file.getInputStream(), file.getContentType());
+		        } catch (MinioException e) {
+		            throw new IllegalStateException("The file cannot be upload on the internal storage. Please retry later", e);
+		        } catch (IOException e) {
+		            throw new IllegalStateException("The file cannot be read", e);
+		        }
+			}
+			
+		}
+        
+    }
+    
     @DeleteMapping("/{fileName}")
     public ResponseEntity<GeneralResponseDTO> deleteObject(@PathVariable("fileName") String fileName) {
         
