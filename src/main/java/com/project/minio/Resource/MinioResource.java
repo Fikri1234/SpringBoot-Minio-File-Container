@@ -131,7 +131,7 @@ public class MinioResource {
     }
     
     @PostMapping("/multiple")
-    public void addMultipleAttachement(@RequestParam("file[]") MultipartFile files[]) {
+    public void addMultipleAttachement(@RequestParam("files") MultipartFile files[]) {
     	
     	for (MultipartFile file : files) {
 			log.info("getOriginalFilename multiple: "+file.getOriginalFilename());
